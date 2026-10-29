@@ -1,11 +1,34 @@
-<script setup></script>
+<script setup>
+
+import { ref } from 'vue'
+import RF1 from './components/rf1.vue'
+
+const paginaAtual = ref('eventos')
+
+</script>
 
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+
+  <nav>
+    <button @click="paginaAtual = 'eventos'">Eventos disponíveis</button>
+    <button @click="paginaAtual = 'form'">Adicionar eventos</button>
+  </nav>
+  
+  <RF1  v-if="paginaAtual === 'eventos'" />
+
 </template>
 
-<style scoped></style>
+<style>
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body{
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+  min-height: 100vh;
+}
+
+</style>
