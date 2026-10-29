@@ -2,6 +2,7 @@
 
 import { ref } from 'vue'
 import RF1 from './components/rf1.vue'
+import RF2 from './components/rf2.vue'
 
 const paginaAtual = ref('eventos')
 
@@ -14,7 +15,9 @@ const paginaAtual = ref('eventos')
     <button @click="paginaAtual = 'form'">Adicionar eventos</button>
   </nav>
   
-  <RF1  v-if="paginaAtual === 'eventos'" />
+  <RF1 v-if="paginaAtual === 'eventos'" />
+  <hr>
+  <RF2 v-if="paginaAtual === 'eventos'" />
 
 </template>
 
