@@ -12,12 +12,13 @@ const paginaAtual = ref('eventos')
 
   <nav>
     <button @click="paginaAtual = 'eventos'">Eventos disponíveis</button>
+    <button @click="paginaAtual = 'eventoscfiltro'">Eventos c/ filtro</button>
     <button @click="paginaAtual = 'form'">Adicionar eventos</button>
   </nav>
   
   <RF1 v-if="paginaAtual === 'eventos'" />
-  <hr>
-  <RF2 v-if="paginaAtual === 'eventos'" />
+  
+  <RF2 v-if="paginaAtual === 'eventoscfiltro'" />
 
 </template>
 
