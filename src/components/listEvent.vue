@@ -8,6 +8,7 @@ const erro = ref('')
 
 const busca = ref('')
 const categoriaSelecionada = ref('Todas')
+const filtro = ref(false)
 
 const eventosFiltrados = computed(() => {
     const textoBusca = busca.value.trim().toLowerCase()
@@ -42,8 +43,13 @@ onMounted(buscarEventos)
 
 <template>
     <div id="menuEventos">
-        <h1>Eventos c/ filtro</h1>
-        <div class="filtros">
+        <div id="top">
+            <h1>Eventos</h1>
+            <button @click="filtro = !filtro">
+                {{ filtro ? 'Ocultar filtros' : 'Ativar filtros' }}
+            </button>
+        </div>
+        <div v-if="filtro === true" class="filtros">
             <div>
                 <label for="busca">Buscar pelo título</label>
 
@@ -98,17 +104,19 @@ ul {
     border-radius: 15px;
     list-style: none;
     display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
     margin: 0px;
     padding: 20px;
 }
 
-li{
-    border: 2px, solid;
+li {
+    border: 2px solid;
     border-radius: 10px;
-    margin: 5px;
     padding: 15px;
     display: flex;
     flex-direction: column;
+    flex: 1 1 250px; 
 }
 
 .names{
@@ -130,6 +138,20 @@ li{
 #menuEventos{
     border: 2px solid;
     padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+#top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+button{
+    width: 70px;
+    height: 40px;
+    background-color: #00e1ff;
 }
 
 .filtros {
