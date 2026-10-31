@@ -2,6 +2,7 @@
 
 import { ref } from 'vue'
 import RF1 from './components/listEvent.vue'
+import FORM from './components/newForm.vue'
 
 const paginaAtual = ref('eventos')
 
@@ -15,6 +16,7 @@ const paginaAtual = ref('eventos')
   </nav>
   
   <RF1 v-if="paginaAtual === 'eventos'" />
+  <FORM v-if="paginaAtual === 'form'" />
 </template>
 
 <style>
