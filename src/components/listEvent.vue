@@ -1,4 +1,5 @@
 <script setup>
+import CardEvento from "./eventCard.vue"
 import { ref, onMounted, computed } from 'vue'
 import axios from 'axios'
 
@@ -79,19 +80,8 @@ onMounted(buscarEventos)
 
 
         <ul v-else>
-            <li v-for="evento in eventosFiltrados" :key="evento.id">
-                <div class="names">
-                    {{ evento.id }} - {{ evento.titulo }}
-                </div>
-
-                <div class="descri">
-                    {{ evento.descricao }}
-                </div>
-
-                <div class="infos">
-                    {{ evento.data }} - {{ evento.local }} - {{ evento.categoria }}
-                </div>
-            </li>
+            <CardEvento v-for="evento in eventosFiltrados" :key="evento.id" :evento="evento">
+            </CardEvento>
         </ul>
     </div>
 </template>
@@ -110,30 +100,6 @@ ul {
     padding: 20px;
 }
 
-li {
-    border: 2px solid;
-    border-radius: 10px;
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    flex: 1 1 250px; 
-}
-
-.names{
-    font-size: 22px;
-    font-weight: bold;
-    margin: 3px;
-}
-
-.descri{
-    font-size: 16px;
-    margin-bottom: 5px;
-}
-
-.infos{
-    font-size: 16px;
-    font-weight: bold;
-}
 
 #menuEventos{
     border: 2px solid;
@@ -151,7 +117,6 @@ li {
 button{
     width: 70px;
     height: 40px;
-    background-color: #00e1ff;
 }
 
 .filtros {
