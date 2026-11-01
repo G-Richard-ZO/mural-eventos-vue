@@ -91,4 +91,106 @@ async function cadastrarEvento() {
 </template>
 
 <style scoped>
+h1 {
+  max-width: 720px;
+  margin: 32px auto 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #ddd;
+  color: #111;
+  font-size: 28px;
+  line-height: 1.2;
+}
+
+form {
+  max-width: 720px;
+  margin: 0 auto 48px;
+}
+
+#cadastrarEvento {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-width: 0;
+  margin: 0;
+  padding: 24px;
+  border: 1px solid #d5d5d5;
+  border-radius: 6px;
+  background-color: #fff;
+}
+
+#cadastrarEvento > div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+label {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+input, select, textarea {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #222;
+  font: inherit;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+textarea:focus-visible {
+  outline: 2px solid #333;
+  outline-offset: 3px;
+}
+
+button[type='submit'] {
+  align-self: flex-start;
+  margin-top: 6px;
+  border-color: #222;
+  background-color: #222;
+  color: #fff;
+}
+
+button[type='submit']:hover {
+  border-color: #444;
+  background-color: #444;
+}
+
+form > p {
+  margin: 16px 0 0;
+  padding: 16px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: #fff;
+  color: #555;
+}
+
+form > [role='alert'] {
+  border-left: 3px solid #555;
+}
+
+@media (max-width: 600px) {
+  h1 {
+    margin-top: 24px;
+    font-size: 24px;
+  }
+
+  #cadastrarEvento {
+    gap: 16px;
+    padding: 18px;
+  }
+
+  button[type='submit'] {
+    width: 100%;
+  }
+}
 </style>
