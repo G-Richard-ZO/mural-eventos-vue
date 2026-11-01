@@ -1,6 +1,9 @@
 <script setup>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import axios from 'axios'
+
+const router = useRouter()
 
 function criarFormulario() {
   return {
@@ -15,20 +18,17 @@ function criarFormulario() {
 const evento = ref(criarFormulario())
 const enviando = ref(false)
 const erro = ref('')
-const sucesso = ref('')
 
 async function cadastrarEvento() {
   if (enviando.value) return
 
   enviando.value = true
   erro.value = ''
-  sucesso.value = ''
 
   try {
     await axios.post('http://localhost:3000/eventos', { ...evento.value })
 
-    sucesso.value = 'Evento cadastrado com sucesso!'
-    evento.value = criarFormulario()
+    await router.push('/')
   } catch {
     erro.value = 'Não foi possível cadastrar. Verifique se a API está rodando.'
   } finally {
@@ -85,7 +85,6 @@ async function cadastrarEvento() {
 
         <!--Confirmação visual-->
         <p v-if="erro" role="alert">{{ erro }}</p>
-        <p v-if="sucesso" role="status">{{ sucesso }}</p>
     </form>
 
 </template>

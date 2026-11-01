@@ -1,14 +1,16 @@
 <script setup>
 
-const paginaAtual = defineModel('pagina')
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 </script>
 
 <template>
     <nav>
         <img src="/UFMS.png">
-        <button @click="paginaAtual = 'eventos'">Eventos disponíveis</button>
-        <button @click="paginaAtual = 'form'">Adicionar eventos</button>
+        <button @click="router.push('/')">Eventos disponíveis</button>
+        <button @click="router.push('/cadastro')">Adicionar eventos</button>
   </nav>
 </template>
 
