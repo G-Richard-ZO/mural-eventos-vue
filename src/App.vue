@@ -1,18 +1,15 @@
 <script setup>
 
-import { ref } from 'vue'
-import RF1 from './components/listEvent.vue'
+import { RouterView } from 'vue-router'
 import NAV from './components/navega.vue'
-
-const paginaAtual = ref('eventos')
 
 </script>
 
 <template>
 
-  <NAV v-model:pagina="paginaAtual"/>
+  <NAV />
   
-  <RF1 v-if="paginaAtual === 'eventos'" />
+  <RouterView />
 </template>
 
 <style>
