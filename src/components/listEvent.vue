@@ -88,35 +88,47 @@ onMounted(buscarEventos)
 
 <style scoped>
 
+#menuEventos {
+  margin: 32px 0 48px;
+}
+
+#top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #ddd;
+}
+
+h1 {
+  margin: 0;
+  color: #111;
+  font-size: 28px;
+  line-height: 1.2;
+}
+
 ul {
-    background-color: gray;
-    border: 2px solid;
-    border-radius: 15px;
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin: 0px;
-    padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-
-#menuEventos{
-    border: 2px solid;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
+#menuEventos > p {
+  margin: 0;
+  padding: 24px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: #fff;
+  color: #555;
 }
 
-#top{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-button{
-    width: 70px;
-    height: 40px;
+#menuEventos > [role='alert'] {
+  border-left: 3px solid #555;
 }
 
 .filtros {
@@ -124,19 +136,64 @@ button{
   flex-wrap: wrap;
   gap: 16px;
   margin-bottom: 24px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: #eaeaea;
 }
 
 .filtros > div {
   display: flex;
   flex-direction: column;
+  flex: 1 1 220px;
+  min-width: 0;
   gap: 6px;
 }
 
+label {
+  font-size: 14px;
+  font-weight: bold;
+}
+
 input, select {
-  padding: 10px;
-  font: inherit;
-  border: 1px solid #687b70;
-  border-radius: 6px;
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #222;
+}
+
+input::placeholder {
+  color: #666;
+}
+
+@media (max-width: 700px) {
+  ul {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  #menuEventos {
+    margin-top: 24px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  #top button {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+
+  .filtros {
+    padding: 16px;
+  }
 }
 
 </style>

@@ -22,28 +22,40 @@
 
 <style scoped>
 .card-evento {
-    border: 2px solid;
-    border-radius: 10px;
-    padding: 15px;
+    padding: 22px;
+    border: 1px solid #d5d5d5;
+    border-radius: 6px;
+    background-color: #fff;
     display: flex;
-    flex-direction: column; 
     flex-direction: column;
-    flex: 1 1 250px; 
+    gap: 12px;
+    min-width: 0;
+    overflow-wrap: anywhere;
 }
 
 .names {
-    font-size: 22px;
+    color: #111;
+    font-size: 19px;
     font-weight: bold;
-    margin: 3px;
+    line-height: 1.4;
 }
 
 .descri {
-    font-size: 16px;
-    margin-bottom: 5px;
+    color: #555;
+    font-size: 15px;
 }
 
 .infos {
-    font-size: 16px;
-    font-weight: bold;
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px solid #eee;
+    color: #555;
+    font-size: 13px;
+}
+
+@media (max-width: 600px) {
+    .card-evento {
+        padding: 18px;
+    }
 }
 </style>
