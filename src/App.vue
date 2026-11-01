@@ -2,6 +2,7 @@
 
 import { ref } from 'vue'
 import RF1 from './components/listEvent.vue'
+import NAV from './components/navega.vue'
 
 const paginaAtual = ref('eventos')
 
@@ -9,10 +10,7 @@ const paginaAtual = ref('eventos')
 
 <template>
 
-  <nav>
-    <button @click="paginaAtual = 'eventos'">Eventos disponíveis</button>
-    <button @click="paginaAtual = 'form'">Adicionar eventos</button>
-  </nav>
+  <NAV v-model:pagina="paginaAtual"/>
   
   <RF1 v-if="paginaAtual === 'eventos'" />
 </template>
