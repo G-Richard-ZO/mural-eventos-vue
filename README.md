@@ -1,12 +1,12 @@
 # mural-eventos-vue
 
 Versões das ferramentas utilizadas
-Vue 3.5.44
-Vue Router 5.4.0
-Pinia 4.1.0
-Axios 1.21.0
-Vite 8.3.5
-JSON Server 1.0.0-beta.15
+Vue 3.5.44,
+Vue Router 5.4.0,
+Pinia 4.1.0,
+Axios 1.21.0,
+Vite 8.3.5,
+JSON Server 1.0.0-beta.15,
 
 # Instalação do projeto
 Para a instalação do projeto é necessario o Node.js na versão 26.13.0 LTS ou superior
@@ -30,7 +30,7 @@ cd mural-eventos-vue
 npm install
 ```
 
-(O comando "npm install" instala todas as dependencias necessarias para rodar o VueJs corretamente incluindo o proprio VueJs, Axios e o Json Server que foram utilizados no projeto)
+O comando "npm install" instala todas as dependencias necessarias para rodar o VueJs corretamente incluindo o proprio VueJs, Axios e o Json Server que foram utilizados no projeto
 
 
 # Execução
@@ -44,10 +44,10 @@ Dentro da pasta do projeto execute o comando:
 npx json-server api/db.json --port 3000
 ```
 
-Isso fará com que a API do servidor Json seja inicializada e fique disponivel em:
-```sh
+Isso fará com que a API do servidor Json seja inicializada e fique disponivel em: 
+
 http://localhost:3000/eventos
-```
+
 Ao abrir o endereço no navegador deve aparecer os dados dos eventos no formato Json. Os dados ficam no arquivo dentro de: "pasta do projeto"/api/db.json 
 
 Ele é necessário para que o VueJs se comunique com a api e possa ler os dados dentro do arquivo Json.
@@ -59,7 +59,7 @@ Dentro da pasta do projeto execute o comando:
 npm install
 ```
 
-Abra o endereço informado no navegador, normalmente será:
+Abra o endereço informado no navegador, normalmente será: 
 http://localhost:5173
 
 Para não ter erros utilize sempre o endereço informado no terminal.
