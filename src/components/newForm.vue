@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import axios from 'axios'
 
@@ -58,6 +58,55 @@ function obterDataMinima(){
 
   return ano + '-' + mes + '-' + dia 
 }
+
+const acessados = ref({
+  titulo: false,
+  data: false,
+  local: false,
+  categoria: false,
+})
+const tentativaDeEnvio = ref(false)
+const dataMinima = ref(obterDataMinima())
+
+const erros = computed(function() {
+  const mensagens = {
+    titulo: '',
+    data: '',
+    local: '',
+    categoria: '',
+  }
+
+  const categorias = ['Palestra', 'Workshop', 'Minicurso', 'Hackathon']
+
+  if(evento.value.titulo.trim() === ''){
+    mensagens.titulo = 'O titulo não pode estar vazio.'
+  }
+
+  if(evento.value.data.trim() === ''){
+    mensagens.data = 'A data não pode estar vazia.'
+  }else if(dataMinima.value > evento.value.data){
+     mensagens.data = 'A data deve ser uma data futura, posterior a hoje.'
+  }
+
+  if (evento.value.local.trim() === '') {
+    mensagens.local = 'O local do evento não pode estar vazio.'
+  }
+
+  if (!categorias.includes(evento.value.categoria)) {
+    mensagens.categoria = 'Selecione uma das categorias.'
+  }
+
+  return mensagens
+})
+
+
+function mostrarErro(campo) {
+  const mostrar = acessados.value[campo] || tentativaDeEnvio.value
+  const possuiErro = erros.value[campo] !== ''
+
+  return mostrar && possuiErro
+}
+
 </script>
 
 <template>
@@ -67,7 +116,10 @@ function obterDataMinima(){
         <fieldset id="cadastrarEvento">
             <div>
                 <label for="tituloEvento">Nome do evento:</label>
-                <input id="tituloEvento" v-model.trim="evento.titulo" required />
+                <input id="tituloEvento" type="text" v-model.trim="evento.titulo" @blur="acessados.titulo = true" :aria-invalid="mostrarErro('titulo')" aria-describedby="erroTitulo" required />
+                <p v-if="mostrarErro('titulo')" id="erroTitulo" class="erroCampo" aria-live="polite">
+                  {{ erros.titulo }}
+                </p>
             </div>
 
             <div>
@@ -81,23 +133,32 @@ function obterDataMinima(){
 
             <div>
                 <label for="dataEvento">Data do evento:</label>
-                <input id="dataEvento" v-model="evento.data" type="date" :min="obterDataMinima()" required />
+                <input id="dataEvento" v-model="evento.data" type="date" :min="dataMinima" @blur="acessados.data = true" :aria-invalid="mostrarErro('data')" aria-describedby="erroData" required />
+                <p v-if="mostrarErro('data')" id="erroData" class="erroCampo" aria-live="polite">
+                  {{ erros.data }}
+                </p>  
             </div>
 
             <div>
                 <label for="localEvento">Local do evento:</label>
-                <input id="localEvento" v-model.trim="evento.local" required />
+                <input id="localEvento" type="text" v-model.trim="evento.local" @blur="acessados.local = true" :aria-invalid="mostrarErro('local')" aria-describedby="erroLocal" required />
+                <p v-if="mostrarErro('local')" id="erroLocal" class="erroCampo" aria-live="polite">
+                  {{ erros.local }}
+                </p>
             </div>
 
             <div>
                 <label for="categoriaEvento">Categoria do evento:</label>
-                <select id="categoriaEvento" v-model="evento.categoria" required>
+                <select id="categoriaEvento" v-model="evento.categoria" @blur="acessados.categoria = true" :aria-invalid="mostrarErro('categoria')" aria-describedby="erroCategoria" required>
                 <option disabled value="">Selecione a categoria</option>
                 <option value="Palestra">Palestra</option>
                 <option value="Workshop">Workshop</option>
                 <option value="Minicurso">Minicurso</option>
                 <option value="Hackathon">Hackathon</option>
                 </select>
+                <p v-if="mostrarErro('categoria')" id="erroCategoria" class="erroCampo" aria-live="polite">
+                  {{ erros.categoria }}
+                </p>
             </div>
 
             <button type="submit">
@@ -152,6 +213,17 @@ label {
   font-weight: bold;
 }
 
+.erroCampo {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: #b42318;
+}
+
+input[aria-invalid="true"], select[aria-invalid="true"], textarea[aria-invalid="true"] {
+  border-color: #b42318;
+}
+
 input, select, textarea {
   width: 100%;
   min-width: 0;
@@ -199,6 +271,7 @@ form > p {
 form > [role='alert'] {
   border-left: 3px solid #555;
 }
+
 
 @media (max-width: 600px) {
   h1 {
