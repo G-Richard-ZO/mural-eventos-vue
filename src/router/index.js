@@ -7,7 +7,7 @@ const router = createRouter({
   routes: [
     { path: '/', component: ListaEventos },
     //rota pronta para RF3
-    { path: '/cadastro', component: FormEvento },
+    { path: '/eventos/novo', component: FormEvento },
   ],
 })
 

@@ -10,7 +10,7 @@ const router = useRouter()
     <nav>
         <img src="/UFMS.png">
         <button @click="router.push('/')">Eventos disponíveis</button>
-        <button @click="router.push('/cadastro')">Adicionar eventos</button>
+        <button @click="router.push('/eventos/novo')">Adicionar eventos</button>
   </nav>
 </template>
 
