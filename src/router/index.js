@@ -6,7 +6,7 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     { path: '/', component: ListaEventos },
-    { path: '/cadastro', component: FormEvento },
+    { path: '/eventos/novo', component: FormEvento },
   ],
 })
 
