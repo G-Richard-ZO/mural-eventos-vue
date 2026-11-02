@@ -35,6 +35,29 @@ async function cadastrarEvento() {
     enviando.value = false
   }
 }
+
+function obterDataMinima(){
+  const amanha = new Date()
+  amanha.setDate(amanha.getDate() + 1)
+
+  const ano = amanha.getFullYear()
+  let mes = amanha.getMonth() + 1
+  let dia = amanha.getDate()
+
+  console.log("Data antes da padronização" + ano + '-' + mes + '-' + dia)
+
+  if(mes < 10){
+    mes = '0' + mes 
+  }
+
+  if(dia < 10){
+    dia = '0' + dia
+  }
+
+  console.log("Data depois da padronização" + ano + '-' + mes + '-' + dia)
+
+  return ano + '-' + mes + '-' + dia 
+}
 </script>
 
 <template>
@@ -58,7 +81,7 @@ async function cadastrarEvento() {
 
             <div>
                 <label for="dataEvento">Data do evento:</label>
-                <input id="dataEvento" v-model="evento.data" type="date" required />
+                <input id="dataEvento" v-model="evento.data" type="date" :min="obterDataMinima()" required />
             </div>
 
             <div>
