@@ -1,4 +1,5 @@
 <script setup>
+    import { RouterLink } from 'vue-router'
     defineProps({
         evento: { type: Object, required: true},
     })
@@ -7,7 +8,9 @@
 <template>
     <li class="card-evento">
         <div class="names">
-            {{ evento.id }} - {{ evento.titulo }}
+            <RouterLink :to="'/eventos/' + evento.id">
+                {{ evento.titulo }}
+            </RouterLink>
         </div>
 
         <div class="descri">
@@ -38,6 +41,15 @@
     font-size: 19px;
     font-weight: bold;
     line-height: 1.4;
+}
+
+.names a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.names a:hover {
+  color: rgb(5, 60, 123);
 }
 
 .descri {
