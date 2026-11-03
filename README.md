@@ -1,8 +1,8 @@
 # mural-eventos-vue
 
-O mural de eventos do curso é uma aplicação desenvolvida em Vue.js para o seminário da materia de Programação Web do curso de Sistemas de Informação da UFMS-CPTL. 
+O mural de eventos do curso é uma aplicação desenvolvida em Vue.js para o seminário da matéria de Programação Web do curso de Sistemas de Informação da UFMS-CPTL. 
 O Mural de Eventos em sua versão final permite consultar eventos do curso, realizar pesquisa por título, filtrar por categoria, cadastrar novos eventos, visualizar detalhes e marcar interesse nos eventos.
-O documento em sua finalizade instrui a instalação do VueJs para a utilização durante o seminário na etapa da oficina e do live coding.
+Este documento em sua finalidade tem por objetivo instruir a instalação do VueJs para a utilização durante o seminário na etapa da oficina e do live coding, e relatar a documentação técnica do projeto, explicação de cada branch do repositório e a divisão dos blocos para a apresentação.
 
 ## Integrantes do grupo e a divisão dos blocos para apresentação
 
@@ -10,19 +10,19 @@ Integrantes:
 Gabriel Gonçalves de Assis Souza,
 Gabriel Richard Zambianchi de Oliveira,
 Matheus Gomes,
-Matheus Mandarini de Menezes,
+Matheus Mandarini de Menezes.
 
 Divisão dos blocos por integrantes:
 | Bloco | Integrantes Responsáveis |
 |---|---|
 | `Abertura` | Matheus Mandarini |
-| `Fundamentos` | Gabriel Gonsalves e Matheus Mandarini |
-| `Live Coding` | Solução acumulada até o RF3. |
-| `Oficina` | Solução acumulada até o RF4. |
-| `Fechamento` | Solução acumulada até o RF5. |
-| `Quiz` | Solução final.
+| `Fundamentos` | Gabriel Gonçalves e Matheus Mandarini |
+| `Live Coding` | Gabriel Richard e Matheus Gomes |
+| `Oficina` | Gabriel R. , Matheus G. e Matheus M. |
+| `Fechamento` | Gabriel Gonçalves |
+| `Quiz` | Matheus Mandarini
 
-Branchs e seus repectivos conteúdos:
+Branches e seus repectivos conteúdos:
 | Branch | Conteúdo |
 |---|---|
 | `live-coding` | Projeto inicial para implementar RF1 e RF2 ao vivo. |
@@ -33,6 +33,7 @@ Branchs e seus repectivos conteúdos:
 | `main` | Solução final. |
 
 Versões das ferramentas utilizadas:
+Node.js 26.13.0 LTS (Obrigatório para executar os comandos de instalação)
 Vue 3.5.44,
 Vue Router 5.4.0,
 Pinia 4.1.0,
@@ -41,10 +42,11 @@ Vite 8.3.5,
 JSON Server 1.0.0-beta.15.
 
 # Instalação do projeto
-Para a instalação do projeto é necessario o Node.js na versão 26.13.0 LTS ou superior
+Para a instalação do projeto é necessário o Node.js na versão 26.13.0 LTS ou superior
 
 ## 1° Baixe o projeto do GitHub na branch start
-Pode-se baixar pelo GitHub via Web ou diretamewnte pelo terminal. Para baixar pelo terminal abra o na pasta onde os arquivos serão baixados execute o seguinte comando:
+Pode-se baixar pelo GitHub via Web ou diretamente pelo terminal. 
+Para baixar pelo terminal abra-o na pasta onde deseja salvar os arquivos do projeto e execute o seguinte comando:
 
 ```sh
 git clone --branch start https://github.com/G-Richard-ZO/mural-eventos-vue.git
@@ -62,7 +64,7 @@ cd mural-eventos-vue
 npm install
 ```
 
-O comando "npm install" instala todas as dependencias necessarias para rodar o VueJs corretamente incluindo o proprio VueJs, Axios e o Json Server que foram utilizados no projeto
+O comando "npm install" instala todas as dependências necessárias para rodar o VueJs corretamente incluindo o próprio VueJs, Axios e o Json Server que foram utilizados no projeto
 
 
 # Execução
@@ -76,7 +78,7 @@ Dentro da pasta do projeto execute o comando:
 npx json-server api/db.json --port 3000
 ```
 
-Isso fará com que a API do servidor Json seja inicializada e fique disponivel em: 
+Isso fará com que a API do servidor Json seja inicializada e fique disponível em: 
 
 http://localhost:3000/eventos
 
