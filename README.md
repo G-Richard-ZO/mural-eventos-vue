@@ -1,5 +1,37 @@
 # mural-eventos-vue
 
+O mural de eventos do curso é uma aplicação desenvolvida em Vue.js para o seminário da materia de Programação Web do curso de Sistemas de Informação da UFMS-CPTL. 
+O Mural de Eventos em sua versão final permite consultar eventos do curso, realizar pesquisa por título, filtrar por categoria, cadastrar novos eventos, visualizar detalhes e marcar interesse nos eventos.
+O documento em sua finalizade instrui a instalação do VueJs para a utilização durante o seminário na etapa da oficina e do live coding.
+
+## Integrantes do grupo e a divisão dos blocos para apresentação
+
+Integrantes:
+Gabriel Gonçalves de Assis Souza
+Gabriel Richard Zambianchi de Oliveira
+Matheus Gomes
+Matheus Mandarini de Menezes
+
+Blocos que foram apresentados no seminario:
+
+  Bloco           Integrante responsável
+
+Abertura            Matheus Mandarini
+Fundamentos         Gabriel Gonsalves 
+Live Coding         Matheus Gomes e Gabriel Richard
+Oficina prática     Matheus Gomes, Gabriel Richard e Matheus Mandarini
+Fechamento e quiz   Matheus Mandarini
+
+
+| Branch | Conteúdo |
+|---|---|
+| `live-coding` | Projeto inicial para implementar RF1 e RF2 ao vivo. |
+| `start` | RF1 e RF2 prontos; base para a oficina. |
+| `checkpoint-1` | Solução acumulada até o RF3. |
+| `checkpoint-2` | Solução acumulada até o RF4. |
+| `checkpoint-3` | Solução acumulada até o RF5. |
+| `main` | Solução final. |
+
 Versões das ferramentas utilizadas
 Vue 3.5.44,
 Vue Router 5.4.0,
@@ -56,7 +88,7 @@ Ele é necessário para que o VueJs se comunique com a api e possa ler os dados 
 Dentro da pasta do projeto execute o comando:
 
 ```sh
-npm install
+npm run dev
 ```
 
 Abra o endereço informado no navegador, normalmente será: 
