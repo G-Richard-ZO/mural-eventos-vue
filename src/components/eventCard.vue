@@ -6,21 +6,21 @@
 </script>
 
 <template>
-    <li class="card-evento">
-        <div class="names">
-            <RouterLink :to="'/eventos/' + evento.id">
+    <RouterLink :to="'/eventos/' + evento.id">
+        <li class="card-evento">
+            <div class="names">
                 {{ evento.titulo }}
-            </RouterLink>
-        </div>
+            </div>
 
-        <div class="descri">
-            {{ evento.descricao }}
-        </div>
+            <div class="descri">
+                {{ evento.descricao }}
+            </div>
 
-        <div class="infos">
-            {{ evento.data }} - {{ evento.local }} - {{ evento.categoria }}
-        </div>
-    </li>
+            <div class="infos">
+                {{ evento.data }} - {{ evento.local }} - {{ evento.categoria }}
+            </div>
+        </li>
+    </RouterLink>
 </template>
 
 <style scoped>
@@ -36,6 +36,10 @@
     overflow-wrap: anywhere;
 }
 
+.card-evento:hover{
+    transform: scale(1.05); 
+}
+
 .names {
     color: #111;
     font-size: 19px;
@@ -43,7 +47,7 @@
     line-height: 1.4;
 }
 
-.names a {
+a {
   color: inherit;
   text-decoration: none;
 }
