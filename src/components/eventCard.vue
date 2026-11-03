@@ -3,6 +3,10 @@
     defineProps({
         evento: { type: Object, required: true},
     })
+
+    function formatarData(data) {
+        return data.split('-').reverse().join('/')
+    }
 </script>
 
 <template>
@@ -17,7 +21,7 @@
             </div>
 
             <div class="infos">
-                {{ evento.data }} - {{ evento.local }} - {{ evento.categoria }}
+                {{ formatarData(evento.data) }} - {{ evento.local }} - {{ evento.categoria }}
             </div>
         </li>
     </RouterLink>

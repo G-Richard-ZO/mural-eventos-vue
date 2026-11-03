@@ -20,7 +20,7 @@ const eventosFiltrados = computed(() => {
             evento.categoria === categoriaSelecionada.value
 
         return correspondeTitulo && correspondeCategoria
-    })
+    }).sort((a, b) => a.data.localeCompare(b.data))
 })
 
 function buscarEventos() {
