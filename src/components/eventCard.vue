@@ -1,13 +1,17 @@
 <script setup>
     import { RouterLink } from 'vue-router'
+    import { useInteressesStores } from '../stores/interesses'
+
     defineProps({
         evento: { type: Object, required: true},
     })
+
+    const interesses = useInteressesStores()
 </script>
 
 <template>
-    <RouterLink :to="'/eventos/' + evento.id">
-        <li class="card-evento">
+    <li class="card-evento">
+        <RouterLink :to="'/eventos/' + evento.id" class="conteudo-evento">
             <div class="names">
                 {{ evento.titulo }}
             </div>
@@ -19,8 +23,12 @@
             <div class="infos">
                 {{ evento.data }} - {{ evento.local }} - {{ evento.categoria }}
             </div>
-        </li>
-    </RouterLink>
+        </RouterLink>
+
+        <button type="button" @click="interesses.alternar(evento.id)">
+            {{ interesses.temInteresse(evento.id) ? 'Remover interesse' : 'Tenho interesse' }}
+        </button>
+    </li>
 </template>
 
 <style scoped>
@@ -38,6 +46,13 @@
 
 .card-evento:hover{
     transform: scale(1.05); 
+}
+
+.conteudo-evento {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 12px;
 }
 
 .names {

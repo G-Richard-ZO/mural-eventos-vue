@@ -8,6 +8,7 @@ const router = createRouter({
   routes: [
     {path: '/', component: ListaEventos},
     {path: '/eventos/novo', component: FormEvento},
+    {path: '/eventos/meusinteresses', component: ListaEventos, props: {somenteInteresses: true}},
     {path: '/eventos/:id', component: DetalhesEvento},
   ],
 })

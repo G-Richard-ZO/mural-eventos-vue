@@ -2,6 +2,13 @@
 import CardEvento from "./eventCard.vue"
 import { ref, onMounted, computed } from 'vue'
 import axios from 'axios'
+import { useInteressesStores } from '../stores/interesses'
+
+const props = defineProps({
+    somenteInteresses: { type: Boolean, default: false },
+})
+
+const interesses = useInteressesStores()
 
 const eventos = ref([])
 const carregando = ref(true)
@@ -18,8 +25,10 @@ const eventosFiltrados = computed(() => {
         const correspondeTitulo = evento.titulo.toLowerCase().includes(textoBusca)
         const correspondeCategoria = categoriaSelecionada.value === 'Todas' ||
             evento.categoria === categoriaSelecionada.value
+        const correspondeInteresse = !props.somenteInteresses ||
+            interesses.temInteresse(evento.id)
 
-        return correspondeTitulo && correspondeCategoria
+        return correspondeTitulo && correspondeCategoria && correspondeInteresse
     })
 })
 
@@ -45,8 +54,8 @@ onMounted(buscarEventos)
 <template>
     <div id="menuEventos">
         <div id="top">
-            <h1>Eventos</h1>
-            <button @click="filtro = !filtro">
+            <h1>{{ props.somenteInteresses ? 'Meus interesses' : 'Eventos' }}</h1>
+            <button type="button" @click="filtro = !filtro">
                 {{ filtro ? 'Ocultar filtros' : 'Ativar filtros' }}
             </button>
         </div>
@@ -74,7 +83,7 @@ onMounted(buscarEventos)
         <p v-else-if="erro" role="alert">{{ erro }}</p>
 
         <p v-else-if="eventosFiltrados.length === 0" role="status">
-            Nenhum evento encontrado
+            {{ props.somenteInteresses ? 'Nenhum evento de interesse encontrado.' : 'Nenhum evento encontrado' }}
         </p>
 
 

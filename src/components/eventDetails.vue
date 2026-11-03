@@ -2,8 +2,10 @@
 import { ref, watch } from 'vue'
 import { useRoute, RouterLink } from 'vue-router'
 import axios from 'axios'
+import { useInteressesStores } from '../stores/interesses'
 
 const rota = useRoute()
+const interesses = useInteressesStores()
 
 const evento = ref(null)
 const carregando = ref(true)
@@ -76,6 +78,10 @@ watch(function(){
         <strong>Categoria:</strong>
         {{ evento.categoria }}
       </p>
+
+      <button type="button" @click="interesses.alternar(evento.id)">
+        {{ interesses.temInteresse(evento.id) ? 'Remover interesse' : 'Tenho interesse' }}
+      </button>
     </article>
 
     <RouterLink to="/" class="btVoltar">Voltar para os eventos</RouterLink>

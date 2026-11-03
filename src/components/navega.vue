@@ -1,16 +1,21 @@
 <script setup>
 
 import { useRouter } from 'vue-router'
+import { useInteressesStores } from '../stores/interesses'
 
 const router = useRouter()
+const interesses = useInteressesStores()
 
 </script>
 
 <template>
   <nav>
-      <img src="/UFMS.png">
-      <button @click="router.push('/')">Eventos disponíveis</button>
-      <button @click="router.push('/eventos/novo')">Adicionar eventos</button>
+      <img src="/UFMS.png" alt="UFMS">
+      <button type="button" @click="router.push('/')">Eventos disponíveis</button>
+      <button type="button" @click="router.push('/eventos/novo')">Adicionar eventos</button>
+      <button type="button" @click="router.push('/eventos/meusinteresses')">
+        Meus interesses: {{ interesses.total }}
+      </button>
   </nav>
 </template>
 
