@@ -7,38 +7,38 @@ O documento em sua finalizade instrui a instalação do VueJs para a utilizaçã
 ## Integrantes do grupo e a divisão dos blocos para apresentação
 
 Integrantes:
-Gabriel Gonçalves de Assis Souza
-Gabriel Richard Zambianchi de Oliveira
-Matheus Gomes
-Matheus Mandarini de Menezes
+Gabriel Gonçalves de Assis Souza,
+Gabriel Richard Zambianchi de Oliveira,
+Matheus Gomes,
+Matheus Mandarini de Menezes,
 
-Blocos que foram apresentados no seminario:
+Divisão dos blocos por integrantes:
+| Bloco | Integrantes Responsáveis |
+|---|---|
+| `Abertura` | Matheus Mandarini |
+| `Fundamentos` | Gabriel Gonsalves e Matheus Mandarini |
+| `Live Coding` | Solução acumulada até o RF3. |
+| `Oficina` | Solução acumulada até o RF4. |
+| `Fechamento` | Solução acumulada até o RF5. |
+| `Quiz` | Solução final.
 
-  Bloco           Integrante responsável
-
-Abertura            Matheus Mandarini
-Fundamentos         Gabriel Gonsalves 
-Live Coding         Matheus Gomes e Gabriel Richard
-Oficina prática     Matheus Gomes, Gabriel Richard e Matheus Mandarini
-Fechamento e quiz   Matheus Mandarini
-
-
+Branchs e seus repectivos conteúdos:
 | Branch | Conteúdo |
 |---|---|
 | `live-coding` | Projeto inicial para implementar RF1 e RF2 ao vivo. |
-| `start` | RF1 e RF2 prontos; base para a oficina. |
+| `start` | RF1 e RF2 prontos; Base pronta para a oficina. |
 | `checkpoint-1` | Solução acumulada até o RF3. |
 | `checkpoint-2` | Solução acumulada até o RF4. |
 | `checkpoint-3` | Solução acumulada até o RF5. |
 | `main` | Solução final. |
 
-Versões das ferramentas utilizadas
+Versões das ferramentas utilizadas:
 Vue 3.5.44,
 Vue Router 5.4.0,
 Pinia 4.1.0,
 Axios 1.21.0,
 Vite 8.3.5,
-JSON Server 1.0.0-beta.15,
+JSON Server 1.0.0-beta.15.
 
 # Instalação do projeto
 Para a instalação do projeto é necessario o Node.js na versão 26.13.0 LTS ou superior
@@ -97,42 +97,3 @@ http://localhost:5173
 Para não ter erros utilize sempre o endereço informado no terminal.
 
 -----------------------------------------------------------------------------
-
-# Abaixo consta as instruções padrão para a instalação do Vue 3
-
-This template should help get you started developing with Vue 3 in Vite.
-
-## Recommended IDE Setup
-
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Recommended Browser Setup
-
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
