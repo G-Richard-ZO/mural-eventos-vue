@@ -6,6 +6,10 @@
         evento: { type: Object, required: true},
     })
 
+    function formatarData(data) {
+        return data.split('-').reverse().join('/')
+    }
+
     const interesses = useInteressesStores()
 </script>
 
@@ -21,7 +25,7 @@
             </div>
 
             <div class="infos">
-                {{ evento.data }} - {{ evento.local }} - {{ evento.categoria }}
+                {{ formatarData(evento.data) }} - {{ evento.local }} - {{ evento.categoria }}
             </div>
         </RouterLink>
 

@@ -29,7 +29,7 @@ const eventosFiltrados = computed(() => {
             interesses.temInteresse(evento.id)
 
         return correspondeTitulo && correspondeCategoria && correspondeInteresse
-    })
+    }).sort((a, b) => a.data.localeCompare(b.data))
 })
 
 function buscarEventos() {
