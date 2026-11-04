@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, reactive, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import axios from 'axios'
 
@@ -15,18 +15,26 @@ function criarFormulario() {
   }
 }
 
-const evento = ref(criarFormulario())
+const form = reactive(criarFormulario())
 const enviando = ref(false)
 const erro = ref('')
 
 async function cadastrarEvento() {
   if (enviando.value) return
 
+  tentativaDeEnvio.value = true
+
+  const possuiErros = Object.values(erros.value).some(
+    (mensagem) => mensagem !== ''
+  )
+
+  if (possuiErros) return
+
   enviando.value = true
   erro.value = ''
 
   try {
-    await axios.post('http://localhost:3000/eventos', { ...evento.value })
+    await axios.post('http://localhost:3000/eventos', { ...form })
 
     await router.push('/')
   } catch {
@@ -78,21 +86,21 @@ const erros = computed(function() {
 
   const categorias = ['Palestra', 'Workshop', 'Minicurso', 'Hackathon']
 
-  if(evento.value.titulo.trim() === ''){
+  if(form.titulo.trim() === ''){
     mensagens.titulo = 'O titulo não pode estar vazio.'
   }
 
-  if(evento.value.data.trim() === ''){
+  if(form.data.trim() === ''){
     mensagens.data = 'A data não pode estar vazia.'
-  }else if(dataMinima.value > evento.value.data){
+  }else if(dataMinima.value > form.data){
      mensagens.data = 'A data deve ser uma data futura, posterior a hoje.'
   }
 
-  if (evento.value.local.trim() === '') {
+  if (form.local.trim() === '') {
     mensagens.local = 'O local do evento não pode estar vazio.'
   }
 
-  if (!categorias.includes(evento.value.categoria)) {
+  if (!categorias.includes(form.categoria)) {
     mensagens.categoria = 'Selecione uma das categorias.'
   }
 
@@ -112,11 +120,11 @@ function mostrarErro(campo) {
 <template>
 
     <h1>Cadastrar novo evento</h1>
-    <form @submit.prevent="cadastrarEvento">
+    <form @submit.prevent="cadastrarEvento" novalidate>
         <fieldset id="cadastrarEvento">
             <div>
                 <label for="tituloEvento">Nome do evento:</label>
-                <input id="tituloEvento" type="text" v-model.trim="evento.titulo" @blur="acessados.titulo = true" :aria-invalid="mostrarErro('titulo')" aria-describedby="erroTitulo" required />
+                <input id="tituloEvento" type="text" v-model.trim="form.titulo" @blur="acessados.titulo = true" :aria-invalid="mostrarErro('titulo')" aria-describedby="erroTitulo" required />
                 <p v-if="mostrarErro('titulo')" id="erroTitulo" class="erroCampo" aria-live="polite">
                   {{ erros.titulo }}
                 </p>
@@ -126,14 +134,14 @@ function mostrarErro(campo) {
                 <label for="descricaoEvento">Descrição do evento:</label>
                 <textarea
                 id="descricaoEvento"
-                v-model.trim="evento.descricao"
+                v-model.trim="form.descricao"
                 rows="5"
                 ></textarea>
             </div>
 
             <div>
                 <label for="dataEvento">Data do evento:</label>
-                <input id="dataEvento" v-model="evento.data" type="date" :min="dataMinima" @blur="acessados.data = true" :aria-invalid="mostrarErro('data')" aria-describedby="erroData" required />
+                <input id="dataEvento" v-model="form.data" type="date" :min="dataMinima" @blur="acessados.data = true" :aria-invalid="mostrarErro('data')" aria-describedby="erroData" required />
                 <p v-if="mostrarErro('data')" id="erroData" class="erroCampo" aria-live="polite">
                   {{ erros.data }}
                 </p>  
@@ -141,7 +149,7 @@ function mostrarErro(campo) {
 
             <div>
                 <label for="localEvento">Local do evento:</label>
-                <input id="localEvento" type="text" v-model.trim="evento.local" @blur="acessados.local = true" :aria-invalid="mostrarErro('local')" aria-describedby="erroLocal" required />
+                <input id="localEvento" type="text" v-model.trim="form.local" @blur="acessados.local = true" :aria-invalid="mostrarErro('local')" aria-describedby="erroLocal" required />
                 <p v-if="mostrarErro('local')" id="erroLocal" class="erroCampo" aria-live="polite">
                   {{ erros.local }}
                 </p>
@@ -149,7 +157,7 @@ function mostrarErro(campo) {
 
             <div>
                 <label for="categoriaEvento">Categoria do evento:</label>
-                <select id="categoriaEvento" v-model="evento.categoria" @blur="acessados.categoria = true" :aria-invalid="mostrarErro('categoria')" aria-describedby="erroCategoria" required>
+                <select id="categoriaEvento" v-model="form.categoria" @blur="acessados.categoria = true" :aria-invalid="mostrarErro('categoria')" aria-describedby="erroCategoria" required>
                 <option disabled value="">Selecione a categoria</option>
                 <option value="Palestra">Palestra</option>
                 <option value="Workshop">Workshop</option>
