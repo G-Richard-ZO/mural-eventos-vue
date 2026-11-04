@@ -10,21 +10,21 @@
 </script>
 
 <template>
-    <RouterLink :to="'/eventos/' + evento.id">
         <li class="card-evento">
-            <div class="names">
-                {{ evento.titulo }}
-            </div>
+            <RouterLink :to="'/eventos/' + evento.id" class="conteudo-evento">
+                <div class="names">
+                    {{ evento.titulo }}
+                </div>
 
-            <div class="descri">
-                {{ evento.descricao }}
-            </div>
+                <div class="descri">
+                    {{ evento.descricao }}
+                </div>
 
-            <div class="infos">
-                {{ formatarData(evento.data) }} - {{ evento.local }} - {{ evento.categoria }}
-            </div>
+                <div class="infos">
+                    {{ formatarData(evento.data) }} - {{ evento.local }} - {{ evento.categoria }}
+                </div>
+            </RouterLink>
         </li>
-    </RouterLink>
 </template>
 
 <style scoped>
