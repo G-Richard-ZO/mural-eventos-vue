@@ -2,23 +2,11 @@
 import { ref, reactive, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import axios from 'axios'
-
-const router = useRouter()
+/*  Declaração do router */
 
 /*  Função para criar o formulário */
-function criarFormulario() {
-  return {
-    titulo: '',
-    descricao: '',
-    data: '',
-    local: '',
-    categoria: '',
-  }
-}
+
 /* Variaveis para declarar o formulário, controlar o estado do envio e mensagem de erro */
-const form = reactive(criarFormulario())
-const enviando = ref(false)
-const erro = ref('')
 
 /*  Função para enviar o formulário para a api via utilizando o axios*/
 
@@ -41,15 +29,9 @@ function obterDataMinima(){
 }
 
 /* Script para controlar quais campos foram acessados */
-const acessados = ref({
-  titulo: false,
-  data: false,
-  local: false,
-  categoria: false,
-})
-const tentativaDeEnvio = ref(false)
-const dataMinima = ref(obterDataMinima())
 
+
+/*  Script para checar os campos */
 const erros = computed(function() {
   const mensagens = {
     titulo: '',
@@ -94,7 +76,7 @@ function mostrarErro(campo) {
 <template>
 
     <h1>Cadastrar novo evento</h1>
-    <form @submit.prevent="cadastrarEvento" novalidate>
+    <form novalidate>
         <fieldset id="cadastrarEvento">
             <!-- Nas tags para enviar os dados de campos de texto utilizar .trim() ao final para não enviar espaços em branco-->
             <div>
