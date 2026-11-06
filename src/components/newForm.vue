@@ -121,7 +121,7 @@ function mostrarErro(campo) {
                 <option value="Minicurso">Minicurso</option>
                 <option value="Hackathon">Hackathon</option>
                 </select>
-                <p v-if="mostrarErro('categoria')" id="erroCategoria" class="erroCampo" aria-live="polite">
+                <p id="erroCategoria" class="erroCampo" aria-live="polite">
                   {{ erros.categoria }}
                 </p>
             </div>
