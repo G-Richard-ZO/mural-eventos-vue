@@ -81,8 +81,8 @@ function mostrarErro(campo) {
             <!-- Nas tags para enviar os dados de campos de texto utilizar .trim() ao final para não enviar espaços em branco-->
             <div>
                 <label for="tituloEvento">Nome do evento:</label>
-                <input id="tituloEvento" type="text" |tag para enviar o titulo| @blur="acessados.titulo = true" :aria-invalid="mostrarErro('titulo')" aria-describedby="erroTitulo" required />
-                <p |tag| id="erroTitulo" class="erroCampo" aria-live="polite">
+                <input id="tituloEvento" type="text" @blur="acessados.titulo = true" :aria-invalid="mostrarErro('titulo')" aria-describedby="erroTitulo" required />
+                <p id="erroTitulo" class="erroCampo" aria-live="polite">
                   {{ erros.titulo }}
                 </p>
             </div>
@@ -91,14 +91,13 @@ function mostrarErro(campo) {
                 <label for="descricaoEvento">Descrição do evento:</label>
                 <textarea
                 id="descricaoEvento"
-                |tag|
                 rows="5"
                 ></textarea>
             </div>
 
             <div>
                 <label for="dataEvento">Data do evento:</label>
-                <input id="dataEvento" |tag| type="date" :min="dataMinima" @blur="acessados.data = true" :aria-invalid="mostrarErro('data')" aria-describedby="erroData" required />
+                <input id="dataEvento" type="date" :min="dataMinima" @blur="acessados.data = true" :aria-invalid="mostrarErro('data')" aria-describedby="erroData" required />
                 <p |tag| id="erroData" class="erroCampo" aria-live="polite">
                   {{ erros.data }}
                 </p>  
