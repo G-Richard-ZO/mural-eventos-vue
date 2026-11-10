@@ -7,6 +7,7 @@ const router = createRouter({
   routes: [
     { path: '/', component: ListaEventos },
     { path: '/eventos/novo', component: FormEvento },
+    /* Rota para pagina nova */
   ],
 })
 
