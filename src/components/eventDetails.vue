@@ -5,15 +5,13 @@ import axios from 'axios'
 
 /* Variavel para Router */
 
-
 /* Variaveis para a função de busca */
-
-
 
 /* Função para buscar os eventos */
 
-/* Função para formatar a data */
 
+
+/* Função para formatar a data */
 function formatarData(data){
     const dataSeparada = data.split('-')
     return dataSeparada[2] + '/' + dataSeparada[1] + '/' + dataSeparada[0]

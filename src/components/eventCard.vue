@@ -11,7 +11,7 @@
 <template>
     <li class="card-evento">
         <div class="names">
-            {{ evento.titulo }}
+             {{ evento.titulo }}
         </div>
 
         <div class="descri">
